@@ -14,14 +14,53 @@ def eea(a, b):
         t.append(t[i - 2] - q[i - 1] * t[i - 1])
 
     array = [r[i - 1], s[i - 1], t[i - 1]]
-    print("gcd(", a, b, ") = ", r[i - 1])
-    print("Coefficient S = ", s[i - 1])
-    print("Coefficient T = ", t[i - 1])
+    # print("gcd(", a, b, ") = ", r[i - 1])
+    # print("Coefficient S = ", s[i - 1])
+    # print("Coefficient T = ", t[i - 1])
     return array
 
 
 print("1) ")
-eea(11069529223, 188351587)
+a = eea(11069529223, 188351587)
+print(a[0])
 
 print("2) ")
-eea(435985, 288651)
+a = eea(435985, 288651)
+print(a[0])
+
+
+# This part does not work yet
+def inverse(a, b):
+    array = eea(a, b)
+    # print(a)
+    if array[0] == 1:
+        x = 0  # This is a place holder - need to figure out what the proper use of EEA would be in this context
+    else:
+        print("a is not invertible")
+    print(x)
+    '''
+    t = 0
+    r = b
+    newt = 1
+    newr = a
+
+    while newr != 0:
+        quotient = r % newr
+        (t, newt) = (newt, t - quotient * newt)
+        (r, newr) = (newr, r - quotient * newr)
+
+    print(r)
+
+    if r > 1:
+        print("A is not invertible")
+
+    if r < 0:
+        t += b
+        print(t)
+    '''
+
+
+print("3) ")
+inverse(300, 104759)
+print("4) ")
+inverse(300, 104003)
