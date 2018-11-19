@@ -69,59 +69,56 @@ print("4) ", inverse(300, 104003))
 # This part does not work yet
 def fermat(n, k):
     i = 0
-    array = [2]
     found = False
-
-    while i < n:
-        array.append(2+i)
-        i += 1
+    j = 0
 
     while i < k:
-        a = array[randint(0, len(array) - 1)]
-        if a ^ (n - 1) != 1 % n:
+        count = randint(0, i) + 2
+        if count ^ (n - 1) != 1 % n:
             print("composite")
             found = True
+            j += 1
             break
         i += 1
+
     if not found:
         print("Probably prime")
-        print("Count: ", i)
+        print("Count: ", j)
 
 
 # This part does not work yet
 def miller(n, k):
     i = 0
-    array = [2]
     j = 1
     found = False
 
-    while i < n:
-        array.append(2+i)
-        i += 1
-
     while i < k:
-        a = array[randint(0, len(array))]
+        count = randint(0, i) + 2
 
+        print(count)
         # unsure how to get this info in correct order
         r = (n - 1)/(2 ^ u)
         u = math.log2((n-1)/r)
-        z = a ^ r % n
+        z = count ^ r % n
 
         if z != 1 & z != n-1:
             while j < u - 1:
                 z = z ^ 2 % n
                 if z == 1:
-                    print(n, " is composite")
+                    print(n, "is composite")
                     found = True
             if z != n-1:
-                print(n, " is composite")
+                print(n, "is composite")
                 found = True
+
+        i += 1
     if not found:
-        print(n, " is likely prime")
+        print(n, "is likely prime")
 
 
 # Causes memory error
-# miller(9746347772161, 1)
+fermat(9746347772161, 1)
 
 # Causes memory error
-# fermat(9746347772161, 1)
+miller(9746347772161, 1)
+
