@@ -121,14 +121,58 @@ def miller(n, k):
     if not found:
         print(n, " is likely prime")
 
-
-print("Fermat")
-fermat(7, 20)
-fermat(169, 20)
-# print "Fermat", fermat(1024, 20)
-# print "Fermat", fermat(17477, 20)
-# print "Fermat", fermat(9746347772161, 20)
-
-# print "Miller-Rabin", miller(9746347772161, 1)
 '''
+
+
+def fermat(n):
+    if n > 1:
+        for time in range(3):
+            random = randint(2, n) - 1
+            if(pow(random, n - 1, n) != 1):
+                return False
+        return True
+    else:
+        return False
+
+
+def miller(n):
+    if n == 2:
+        return True
+    elif n == 1 or n % 2 == 0:
+        return False
+
+    odd = n - 1
+    timesTwo = 0
+
+    while odd % 2 == 0:
+        odd = odd/2
+        timesTwo = timesTwo + 1
+
+    for time in range(3):
+        while True:
+            random = randint(2, n) - 1
+            if random != 0 and random != 1:
+                break
+        randomPower = pow(random, odd, n)
+        if randomPower != 1 and randomPower != n - 1:
+            i = 1
+            while i <= timesTwo - 1 and randomPower != n - 1:
+                    randomPower = pow(randomPower, 2, n)
+                    i += 1
+            if randomPower != n-1:
+                return False
+    return True
+
+
+print("Fermat for 9746347772161")
+if fermat(9746347772161) == True:
+    print "probably prime"
+else:
+    print "composite"
+
+print("Miller-Rabin for 9746347772161")
+if miller(9746347772161) == True:
+    print "probably prime"
+else:
+    print "composite"
 
