@@ -31,14 +31,20 @@ a = eea(435985, 288651)
 print("2) ", a[0])
 
 
-# This part does not work yet
+# This part does not work yet pg 162
 def inverse(a, b):
     array = eea(a, b)
-    # print(a)
+    # print(array)
     if array[0] == 1:
-        x = 0  # This is a place holder - need to figure out what the proper use of EEA would be in this context
+        #x = 0  # This is a place holder - need to figure out what the proper use of EEA would be in this context
+        x = array[1]*a+array[2]*b
+        x = x%a
     else:
         print("a is not invertible")
+    if x == 1:
+        return array[1]
+    else:
+        print("There was an error")
     '''
     t = 0
     r = b
@@ -66,7 +72,7 @@ print("3) ", inverse(300, 104759))
 print("4) ", inverse(300, 104003))
 
 
-# This part does not work yet
+# This part does not work yet see page 189
 def fermat(n, k):
     i = 0
     array = [2]
@@ -88,7 +94,7 @@ def fermat(n, k):
         print("Count: ", i)
 
 
-# This part does not work yet
+# This part does not work yet see page 191
 def miller(n, k):
     i = 0
     array = [2]
