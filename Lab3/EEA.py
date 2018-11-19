@@ -1,3 +1,7 @@
+from random import randint
+import math
+
+
 def eea(a, b):
     r = [a, b]
     s = [1, 0]
@@ -20,13 +24,11 @@ def eea(a, b):
     return array
 
 
-print("1) ")
 a = eea(11069529223, 188351587)
-print(a[0])
+print("1) ", a[0])
 
-print("2) ")
 a = eea(435985, 288651)
-print(a[0])
+print("2) ", a[0])
 
 
 # This part does not work yet
@@ -37,7 +39,6 @@ def inverse(a, b):
         x = 0  # This is a place holder - need to figure out what the proper use of EEA would be in this context
     else:
         print("a is not invertible")
-    print(x)
     '''
     t = 0
     r = b
@@ -60,7 +61,67 @@ def inverse(a, b):
     '''
 
 
-print("3) ")
-inverse(300, 104759)
-print("4) ")
-inverse(300, 104003)
+print("3) ", inverse(300, 104759))
+
+print("4) ", inverse(300, 104003))
+
+
+# This part does not work yet
+def fermat(n, k):
+    i = 0
+    array = [2]
+    found = False
+
+    while i < n:
+        array.append(2+i)
+        i += 1
+
+    while i < k:
+        a = array[randint(0, len(array) - 1)]
+        if a ^ (n - 1) != 1 % n:
+            print("composite")
+            found = True
+            break
+        i += 1
+    if not found:
+        print("Probably prime")
+        print("Count: ", i)
+
+
+# This part does not work yet
+def miller(n, k):
+    i = 0
+    array = [2]
+    j = 1
+    found = False
+
+    while i < n:
+        array.append(2+i)
+        i += 1
+
+    while i < k:
+        a = array[randint(0, len(array))]
+
+        # unsure how to get this info in correct order
+        r = (n - 1)/(2 ^ u)
+        u = math.log2((n-1)/r)
+        z = a ^ r % n
+
+        if z != 1 & z != n-1:
+            while j < u - 1:
+                z = z ^ 2 % n
+                if z == 1:
+                    print(n, " is composite")
+                    found = True
+            if z != n-1:
+                print(n, " is composite")
+                found = True
+    if not found:
+        print(n, " is likely prime")
+
+
+# Causes memory error
+# miller(9746347772161, 1)
+
+# Causes memory error
+# fermat(9746347772161, 1)
