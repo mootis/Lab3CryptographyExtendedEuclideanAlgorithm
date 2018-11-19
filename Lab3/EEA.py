@@ -31,20 +31,21 @@ a = eea(435985, 288651)
 print("2) ", a[0])
 
 
-# This part does not work yet pg 162
 def inverse(a, b):
     array = eea(a, b)
-    # print(array)
+
     if array[0] == 1:
         #x = 0  # This is a place holder - need to figure out what the proper use of EEA would be in this context
         x = array[1]*a+array[2]*b
         x = x%a
     else:
         print("a is not invertible")
+
     if x == 1:
         return array[1]
     else:
         print("There was an error")
+
     '''
     t = 0
     r = b
@@ -71,42 +72,37 @@ print("3) ", inverse(300, 104759))
 
 print("4) ", inverse(300, 104003))
 
-
+'''
 # This part does not work yet see page 189
 def fermat(n, k):
     i = 0
-    array = [2]
-    found = False
+    check = False
 
-    while i < n:
-        array.append(2+i)
-        i += 1
+    if n < 3:
+        print("Invalid n value. Please select n > 3.")
 
-    while i < k:
-        a = array[randint(0, len(array) - 1)]
-        if a ^ (n - 1) != 1 % n:
-            print("composite")
-            found = True
-            break
+    while i < k and not check:
         i += 1
-    if not found:
-        print("Probably prime")
-        print("Count: ", i)
+        a = randint(2, n - 2)
+        compare = 1 % n
+
+        if a^(n-1) != compare:
+            print "Composite"
+            check = True
+
+    if not check:
+        print "Probably prime"
+    print i
 
 
 # This part does not work yet see page 191
 def miller(n, k):
     i = 0
-    array = [2]
     j = 1
     found = False
 
-    while i < n:
-        array.append(2+i)
-        i += 1
-
     while i < k:
-        a = array[randint(0, len(array))]
+        a = randint(0, n - 2)
 
         # unsure how to get this info in correct order
         r = (n - 1)/(2 ^ u)
@@ -126,8 +122,13 @@ def miller(n, k):
         print(n, " is likely prime")
 
 
-# Causes memory error
-# miller(9746347772161, 1)
+print("Fermat")
+fermat(7, 20)
+fermat(169, 20)
+# print "Fermat", fermat(1024, 20)
+# print "Fermat", fermat(17477, 20)
+# print "Fermat", fermat(9746347772161, 20)
 
-# Causes memory error
-# fermat(9746347772161, 1)
+# print "Miller-Rabin", miller(9746347772161, 1)
+'''
+
