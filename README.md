@@ -1,4 +1,19 @@
 # ChongParkLab3CSCI4554
+
+Our results are as follows:
+1) 105401
+2) 11
+3) 21301
+4) 46108
+
+Primality Tests:<br/>
+Fermat) both composite and probably prime <br/>
+Miller) composite
+
+To run our program use terminal and clone the repo.<br/> From there navigate to the folder Lab3 and can see the EEA.py file.<br/> Run "python EEA.py" This should return our results.
+
+We were unable to implement a counter for the number of cycles. It was causing errors that we could not figure out. The primality tests are only passed the number to check and not the security key as that was causing issues. You can see the code that we tried to use commented out in the EEA.py file.
+
 CSci 4554 Lab 3: Extended Euclidean Algorithm; primality testing <br/>
 Due Monday, November 19th at 11:59pm (by e-mail) <br/>
 45 points total <br/>
